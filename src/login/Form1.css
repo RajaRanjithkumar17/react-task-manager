@@ -1,0 +1,33 @@
+.loginForm{
+    width: 100%;
+    height: auto;
+}
+input{
+    width: 80%;
+    height: 25px;
+    display: block;
+    margin: 10px;
+   
+}
+#submit{
+    width: auto;
+   margin: auto;
+}
+.loginForm{
+    width: 100%;
+    height: auto;
+    display: flex;
+  
+}
+
+.forms{
+    width: 300px;
+    height: 250px;
+    background-color: rgb(144, 174, 201);
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-left: 40%;
+    padding: 25px;
+    border-radius: 5px;
+}
