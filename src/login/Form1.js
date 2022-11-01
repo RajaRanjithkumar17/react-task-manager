@@ -7,27 +7,27 @@ import data from '../Credentials/Userdetail.json'
 const Form1 = () => {
   const navigate = useNavigate();
 
-  const [userName , setUserName]= useState('')//{datas}
-  const [userPwd ,setUserPwd]= useState('')
+  const [userName , setUserName]= useState("ramm")
+  const [userPwd ,setUserPwd]= useState(1234)
 
 
 
-  const HandelSub = (sub)=>{
-    // sub. preventDefault();
+  const HandelSub = ()=>{
+    //sub.preventDefault();
 
     var detail =  data.map((index)=>{ return(index.userName)  })
      
      
-    var ind = detail.indexOf("ranjith");
+    var ind = detail.indexOf(userName);
     console.log(ind);
 
     var pwddetail =  data.map((index)=>{ return(index.password)})
-    var inde = pwddetail.indexOf("1234567");
+    var inde = pwddetail.indexOf(userPwd);
     console.log(inde);
    
     console.log("sub",detail,pwddetail);
  
-    if (ind===inde){
+    if (ind===inde){                                          
 
       console.log("validated");
 
