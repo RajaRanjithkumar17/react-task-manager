@@ -45,14 +45,12 @@ const Form1 = () => {
   
 
 const handelName = (nam)=>{
-  console.log("nam",nam);
-  if (nam.target.name==="userName") {
+   if (nam.target.name==="userName") {
    setUserName(nam.target.value) 
   }
 
 } 
-const handelPwd = (pwd)=>{
-  console.log("nam",pwd);
+const handelPwd = (pwd)=>{ 
   if (pwd.target.name==="userpwd") {
     setUserPwd(pwd.target.value) 
   }

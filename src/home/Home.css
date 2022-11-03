@@ -1,0 +1,47 @@
+.task{
+    width: 100%;
+    height: auto;
+    display: flex;
+    margin: 0 auto;
+}
+.taskList{
+    width: 100%;
+    height: auto;
+
+}
+h1{
+    color: blue;
+}
+.tasks{
+    width: 100%;
+    height: auto;
+    margin: 25px;
+    display: flex;
+}
+#addnew{
+    width: 300px;
+    height: 30px;
+}
+.tasks button{
+    margin-left: 10px;
+    
+}
+.tasks_{
+    width: 400px;
+    height: auto;
+    padding: 25px;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(176, 191, 204);
+    
+}
+#addbtn{
+    width: 100px;
+}
+.tasks textarea{
+    width: 300px;
+    margin-top: 10px;
+    
+}
+
