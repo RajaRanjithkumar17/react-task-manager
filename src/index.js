@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import { BrowserRouter,Routes,Route, Navigate } from 'react-router-dom';
 import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -13,16 +13,27 @@ import { taskarr } from './context/reducer';
 
 
 function Routerscomp (){
-  const [state, dispatch] = useReducer(stateReducer,taskarr)
+  const [state, dispatch] = useReducer(stateReducer,taskarr);
+  console.log("sta",state);
   return (
     <stateContext.Provider value={{state, dispatch}}>
        <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Form1 />}></Route>
-          <Route path='home' element={<Home />}></Route>
-          <Route path='tasks' element={<Tasks />}></Route>
-          
-        </Routes>
+       {
+        state?.islogin?<Routes>
+        {/* <Route path='/' element={<Form1 />}></Route> */}
+        <Route path='/' element={<Home />}></Route>
+        <Route path='tasks' element={<Tasks />}></Route>
+        <Route path='*' element={<Navigate to ="/" />}></Route>
+        
+      </Routes>:<Routes>
+        <Route path='/form1' element={<Form1 />}></Route>
+        <Route path='*' element={<Navigate to ="/form1" />}></Route>
+
+       
+        
+      </Routes>
+       }
+        
     
      </BrowserRouter>
     </stateContext.Provider>

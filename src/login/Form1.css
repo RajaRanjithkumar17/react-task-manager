@@ -1,3 +1,6 @@
+.task{
+    display: flex;
+}
 .loginForm{
     width: 100%;
     height: auto;
@@ -21,7 +24,7 @@
 }
 
 .forms{
-    width: 300px;
+    width: 350px;
     height: 250px;
     background-color: rgb(144, 174, 201);
     justify-content: center;

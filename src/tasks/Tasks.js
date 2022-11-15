@@ -1,50 +1,71 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-// import "./Task.css"
+import TextField from "@mui/material/TextField";
+import Button from '@mui/material/Button';
 import { stateContext } from "../context/Contexts";
+// import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+// import dayjs from 'dayjs';
+
+// import Stack from '@mui/material/Stack';
+// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+
 
 const Tasks = () => {
-  const [searchParams]= useSearchParams();
-  let id=searchParams.get('id');
-  console.log(id);
-  
+  // const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  let id = searchParams.get("id");
   const { state, dispatch } = useContext(stateContext);
-  const [tasktitle, setTitle] = useState(state.tasks[id-1]?.tasktitle||"");
-  const [taskdescription, setdescription] = useState(state.tasks[id-1]?.taskdescription||" ");
+  const [tasktitle, setTitle] = useState(state.tasks[id-1]?.tasktitle || "");
+  const [taskdescription, setdescription] = useState(
+    state.tasks[id-1]?.taskdescription || ""
+  );
+   const [taskdate , setDat] =useState("");
   const [tasks, add_task] = useState([]);
- 
 
-  const editVal = [...state.tasks]
-  console.log(editVal,"edit task");
- 
+  const handletask = (tsk) => {
+    if (tsk.target.name === "newTask_") {
+      setTitle(tsk.target.value);
+    } else if (tsk.target.name === "message") {
+      setdescription(tsk.target.value);
+    }
+     else if (tsk.target.name === "date"){
 
-  // var tsk1 =  editVal.map((item,index)=>{
-  //   return item.id=id
-    
-  // }
-  // )
-  // if(tsk1){
-  //  editVal.map((item)=>{
-   
-  //       setTitle(item.tasktitle),
-  //       setdescription(item.taskdescription)
-  
-   
-  //  })
+       setDat(tsk.target.value)
 
-  // }
+     }
+  };
 
- 
 
-  const HandelSub = (submit) => {
+  const HandelSubmit = (submit) => {
+
     submit.preventDefault();
-
-
+    // navigate("/")
+// return;
+  if (id) {
     const temp = {
-      id:state.tasks.length+1,
+      id: parseInt(id),
       tasktitle,
       taskdescription,
+        taskdate,
+        intval: false,
+        complete:false,
+        
+    };
+    setTitle("");
+    setdescription("");
+     setDat("")
+    dispatch({ type: "add_to_task", payload:temp });
+  } 
+  else {
+    const temp = {
+      id: state.tasks.length + 1,
+      tasktitle,
+      taskdescription,
+       taskdate,
       intval: false,
+      complete:false,
+      
     };
 
     console.log("title", tasktitle);
@@ -52,43 +73,52 @@ const Tasks = () => {
 
     setTitle("");
     setdescription("");
+    setDat("")
     dispatch({ type: "addtask_", payload: [...state.tasks, temp] });
-    add_task([...tasks, temp]);
+  }
 
-  
-  };
-  const handletask = (tsk) => {
-    if (tsk.target.name === "newTask_") {
-      setTitle(tsk.target.value);
-    } else {
-      setdescription(tsk.target.value);
-    }
+
+    
+    
   };
 
   return (
     <div className="tasks">
       <div className="tasks_">
         <h3>Add new task</h3>
+        <br/>
+
+        <form >
+          
+            <TextField
+              label="title"
+              variant="outlined"
+              onChange={handletask}
+              id="addnew"
+              name="newTask_"
+              value={tasktitle}
+             
+            />
+ 
+            <TextField style={{marginTop: 10 + 'px', width:330+"px"}}
+               variant="outlined"
+               multiline 
+               rows={5}
+              label="Description"
+             
+              onChange={handletask}
+              name="message"
+              value={taskdescription}
+            />
        
-
-        <form onSubmit={HandelSub}>
-
-          <input
-            onChange={handletask}
-            type={"text"}
-            id="addnew"
-            name="newTask_"
-            value={tasktitle}
-            placeholder="titile"
-          />
-          <textarea
-            onChange={handletask}
-            rows={"5"}
-            name="message"
-            value={taskdescription}
-          />{" "}
           <br />
-          <input type={"submit"} id="addbtn" />
+         
+          <br />
+          <input type='date' name='date' value={taskdate} onChange={handletask}/>
+          <Button variant="contained" id="addbtn" onClick={HandelSubmit} >Add</Button>
+
+        
+          
         </form>
       </div>
     </div>
@@ -96,3 +126,4 @@ const Tasks = () => {
 };
 
 export default Tasks;
+
