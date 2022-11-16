@@ -1,0 +1,17 @@
+#date{
+    width: 80%;
+    height: 30px;
+    border-radius: 5px;
+    background-color: rgb(226, 227, 227);
+}
+#addbtn{
+    display: flex;
+    margin: auto;
+}
+.tasks{
+    width: 100%;
+}
+.tasks_{
+    display: flex;
+    margin-left: 550px;
+}

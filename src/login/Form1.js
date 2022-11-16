@@ -32,18 +32,23 @@ const Form1 = () => {
 
     console.log("sub", detail, pwddetail, userName, userPwds);
 
-    if (ind === inde) {
-      console.log("validated");
-      const tem ={
-        islogin: false
+    if(userName!==""&& userPwds!==""){
+      if (ind === inde) {
+        console.log("validated");
+        const tem ={
+          islogin: false
+        }
+        dispatch({ type: "islogon", payload:[...state.tasks, tem] });
+  
+        navigate("home");
+      } else {
+        alert("invalid user name or password");
       }
-      dispatch({ type: "islogon", payload:[...state.tasks, tem] });
-
-      navigate("home");
-    } else {
+  
+    }
+    else{
       alert("invalid user name or password");
     }
-
  
 
   };

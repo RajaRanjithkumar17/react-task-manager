@@ -3,25 +3,19 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from '@mui/material/Button';
 import { stateContext } from "../context/Contexts";
-// import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
-// import dayjs from 'dayjs';
-
-// import Stack from '@mui/material/Stack';
-// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-
+import "./Task.css"
 
 const Tasks = () => {
+
   // const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   let id = searchParams.get("id");
   const { state, dispatch } = useContext(stateContext);
   const [tasktitle, setTitle] = useState(state.tasks[id-1]?.tasktitle || "");
-  const [taskdescription, setdescription] = useState(
-    state.tasks[id-1]?.taskdescription || ""
-  );
-   const [taskdate , setDat] =useState("");
-  const [tasks, add_task] = useState([]);
+  const [taskdescription, setdescription] = useState(state.tasks[id-1]?.taskdescription || "" );
+  const [taskdate , setDat] =useState("");
+    
+
 
   const handletask = (tsk) => {
     if (tsk.target.name === "newTask_") {
@@ -41,7 +35,7 @@ const Tasks = () => {
 
     submit.preventDefault();
     // navigate("/")
-// return;
+
   if (id) {
     const temp = {
       id: parseInt(id),
@@ -94,7 +88,7 @@ const Tasks = () => {
               label="title"
               variant="outlined"
               onChange={handletask}
-              id="addnew"
+              id="addtnew"
               name="newTask_"
               value={tasktitle}
              
@@ -105,7 +99,7 @@ const Tasks = () => {
                multiline 
                rows={5}
               label="Description"
-             
+              id="addtnew"
               onChange={handletask}
               name="message"
               value={taskdescription}
@@ -114,7 +108,7 @@ const Tasks = () => {
           <br />
          
           <br />
-          <input type='date' name='date' value={taskdate} onChange={handletask}/>
+          <input type='date' name='date' id="date" value={taskdate} onChange={handletask}/> <br/> <br/> 
           <Button variant="contained" id="addbtn" onClick={HandelSubmit} >Add</Button>
 
         
