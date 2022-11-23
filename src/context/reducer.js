@@ -5,6 +5,8 @@ export const taskarr = {
 
 export const stateReducer = (state, action) => {
   console.log("action", state, action);
+
+  //add task
   if (action.type === "addtask_") {
     return {
       ...state,
@@ -12,23 +14,15 @@ export const stateReducer = (state, action) => {
     };
   }
 
-
-  if (action.type === "islogon") {
+//log in
+  else if (action.type === "islogon") {
   console.log("action", state, action);
   return { ...state, islogin:!state.islogin}
    
   }
 
-
-  if (action.type === "filter") {
-  console.log("action", state, action);
-
-  return {  
-     ...state,
-                tasks:action.payload}
-   
-  }
-  if (action.type === "filterbyPrior") {
+//ascend by date
+else  if (action.type === "filter") {
   console.log("action", state, action);
 
   return {  
@@ -37,7 +31,36 @@ export const stateReducer = (state, action) => {
    
   }
 
+//all task
+else  if (action.type === "alltask") {
+  console.log("action", state, action);
 
+  return {  
+     ...state,
+                tasks:action.payload}
+   
+  }
+
+//filter by prior
+else  if (action.type === "filterbyPrior") {
+  console.log("action", state, action);
+
+  return {  
+     ...state,
+                tasks:action.payload}
+   
+  }
+//complete
+ else  if (action.type === "filterBycomplete") {
+  console.log("action", state, action);
+
+  return {  
+     ...state,
+                tasks:action.payload}
+   
+  }
+
+//check box 
  else if (action.type === "chkbox") {
     return {
       ...state,
@@ -50,7 +73,7 @@ export const stateReducer = (state, action) => {
     };
   }
 
-
+//mark as complete
  else if (action.type === "didbox") {
     return {
       ...state,
@@ -64,13 +87,15 @@ export const stateReducer = (state, action) => {
   }
 
 
-
+//delete task
  else if (action.type === "del_task") {
     return {
         ...state,
                 tasks: state.tasks.filter((item)=>item.id !== action.payload)
     };
   }
+
+  //upd task
  else if (action.type === "add_to_task") {
   console.log(state,action.payload);
     return {

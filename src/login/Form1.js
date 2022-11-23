@@ -32,7 +32,7 @@ const Form1 = () => {
 
     console.log("sub", detail, pwddetail, userName, userPwds);
 
-    if(userName!==""&& userPwds!==""){
+    if(userName.length!==0 && userPwds.length!==0){
       if (ind === inde) {
         console.log("validated");
         const tem ={
@@ -63,6 +63,7 @@ const Form1 = () => {
       setUserPwd(pwd.target.value);
     }
   };
+ 
 
   return (
     <div className="loginForm">
@@ -86,6 +87,7 @@ const Form1 = () => {
             value={userPwds}
             type={"password"}
           />
+        
           <Button
             style={{ marginTop: 10 + "px", marginLeft: 100 + "px" }}
             variant="contained"
