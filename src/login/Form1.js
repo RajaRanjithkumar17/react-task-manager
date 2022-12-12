@@ -4,7 +4,6 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import "./Form1.css";
 import { stateContext  } from '../context/Contexts'
-
 import data from "../Credentials/Userdetail.json";
 
 const Form1 = () => {
@@ -41,7 +40,8 @@ const Form1 = () => {
         dispatch({ type: "islogon", payload:[...state.tasks, tem] });
   
         navigate("home");
-      } else {
+      }
+       else {
         alert("invalid user name or password");
       }
   
@@ -58,6 +58,7 @@ const Form1 = () => {
       setUserName(nam.target.value);
     }
   };
+  
   const handelPwd = (pwd) => {
     if (pwd.target.name === "userpwd") {
       setUserPwd(pwd.target.value);

@@ -56,7 +56,7 @@ const Tasks = () => {
       id: state.tasks.length + 1,
       tasktitle,
       taskdescription,
-       taskdate,
+      taskdate,
       intval: false,
       complete:false,
       
